@@ -1,4 +1,4 @@
-package com.dreamcatchers.exception;
+package com.dreamcatchers.springbootcrudrest.exception;
 
 import java.util.Date;
 
