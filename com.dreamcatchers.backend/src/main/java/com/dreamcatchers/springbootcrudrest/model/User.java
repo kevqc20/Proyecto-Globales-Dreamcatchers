@@ -27,7 +27,7 @@ public class User implements Serializable {
     private String password;
     private String role = "0";
     private Student student;
-
+ // private Business business
     @Id
     @Column(name = "idUser")
     public String getIdUser() {
@@ -47,7 +47,18 @@ public class User implements Serializable {
     public void setStudent(Student student) {
         this.student = student;
     }
-
+    
+    // Esto mismo pero para business 
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    @JsonBackReference
+//    public Student getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Student student) {
+//        this.student = student;
+//    }
+    
     @Column(name = "email", nullable = false)
     public String getEmail() {
         return email;

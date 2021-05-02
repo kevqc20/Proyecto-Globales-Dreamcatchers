@@ -50,7 +50,7 @@ public class Student implements Serializable {
 
     
     @OneToOne
-    @PrimaryKeyJoinColumn(name="idStudent", referencedColumnName="idUser")
+    @PrimaryKeyJoinColumn(name="idStudent", referencedColumnName="idUser") // Cambiar a foreign
     @JsonManagedReference
     public User getUser() {
         return user;
