@@ -8,4 +8,9 @@ import com.dreamcatchers.springbootcrudrest.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String>{
 
+ String SQL_AUTHENTIFICATION = " ";
+ @Query(nativeQuery = true, value = SQL_AUTHENTIFICATION);
+ Object userApplicationLogin(@Param("email") String email,@Param("password") String password);
+    
+    	
 }

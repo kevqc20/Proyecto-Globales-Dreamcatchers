@@ -23,6 +23,8 @@ import com.dreamcatchers.springbootcrudrest.model.User;
 import com.dreamcatchers.springbootcrudrest.repository.UserRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.dreamcatchers.springbootcrudrest.constant.UserConstant;
+
 
 @RestController
 @RequestMapping("/api/v1")
@@ -82,5 +84,47 @@ public class UserController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
+    }
+    
+    //Login
+    @CrossOrigin
+    @GetMapping("/users/login")
+    public Map<String, String> login(@PathVariable(value = "email") String userEmail, @PathVariable(value = "password") String userPassword) 
+            throws ResourceNotFoundException {
+        Map<String, String> response 	= new HashMap<String, String>();
+        
+        if(userEmail != null && userPassword != null){
+            try {
+               response = userRepository.userApplicationLogin(userEmail,userPassword);
+            }catch(Exception e){
+                response.put(MESSAGE_TYPE,MESSAGE_TYPE_ERROR);
+                response.put(MESSAGE, MESSAGE_ERROR_LOGIN); 
+            }
+        }else{
+            response.put(MESSAGE_TYPE,MESSAGE_TYPE_ERROR);
+            response.put(MESSAGE, MESSAGE_ERROR);
+        }
+      return response;
+    }
+    
+    //Logout
+     @CrossOrigin
+    @GetMapping("/users/login")
+    public Map<String, String> logout(@PathVariable(value = "token") String userToken, @PathVariable(value = "user") String idUser) 
+            throws ResourceNotFoundException {
+        Map<String, String> response 	= new HashMap<String, String>();
+        
+        if(userToken != null && idUser != null){
+            try {
+               response = userRepository.userApplicationLogout(userToken,idUser);
+            }catch(Exception e){
+                response.put(MESSAGE_TYPE,MESSAGE_TYPE_ERROR);
+                response.put(MESSAGE, MESSAGE_ERROR_LOGOUT); 
+            }
+        }else{
+            response.put(MESSAGE_TYPE,MESSAGE_TYPE_ERROR);
+            response.put(MESSAGE, MESSAGE_ERROR);
+        }
+      return response;
     }
 }
