@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,11 +22,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dreamcatchers.springbootcrudrest.exception.ResourceNotFoundException;
 import com.dreamcatchers.springbootcrudrest.model.User;
+import com.dreamcatchers.springbootcrudrest.model.Student;
 import com.dreamcatchers.springbootcrudrest.repository.UserRepository;
+import com.dreamcatchers.springbootcrudrest.repository.StudentRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.dreamcatchers.springbootcrudrest.constant.UserConstant;
 
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -33,6 +40,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private StudentRepository studentRepository;
+    
     //Obtener todos los usuarios
     @CrossOrigin
     @GetMapping("/users")
@@ -95,7 +105,13 @@ public class UserController {
         
         if(userEmail != null && userPassword != null){
             try {
-               response = userRepository.userApplicationLogin(userEmail,userPassword);
+               User user= userRepository.getUser(userEmail , userPassword);
+               Student student = studentRepository.findById(user.getStudent().getIdStudent())
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found :: " + user.getStudent().getIdStudent()));
+               String token= getJWTToken(student.getName());
+               user.setToken(token);
+               updateUser(user.getIdUser(), user);
+               response = user;
             }catch(Exception e){
                 response.put(MESSAGE_TYPE,MESSAGE_TYPE_ERROR);
                 response.put(MESSAGE, MESSAGE_ERROR_LOGIN); 
@@ -109,7 +125,7 @@ public class UserController {
     
     //Logout
      @CrossOrigin
-    @GetMapping("/users/login")
+    @PostMapping("/users/logout")
     public Map<String, String> logout(@PathVariable(value = "token") String userToken, @PathVariable(value = "user") String idUser) 
             throws ResourceNotFoundException {
         Map<String, String> response 	= new HashMap<String, String>();
@@ -126,5 +142,25 @@ public class UserController {
             response.put(MESSAGE, MESSAGE_ERROR);
         }
       return response;
+    }
+    
+    
+    //Creacion token
+    private String getJWTToken(String username) {
+	String secretKey = "mySecretKey";
+	List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+		
+	String token = Jwts
+                .builder()
+		.setId("softtekJWT")
+		.setSubject(username)
+		.claim("authorities", grantedAuthorities.stream()
+				.map(GrantedAuthority::getAuthority)
+				.collect(Collectors.toList()))
+                                    .setIssuedAt(new Date(System.currentTimeMillis()))
+                                    .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                                    .signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
+
+	return "Bearer " + token;
     }
 }

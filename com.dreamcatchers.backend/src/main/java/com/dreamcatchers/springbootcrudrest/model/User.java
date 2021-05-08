@@ -27,6 +27,8 @@ public class User implements Serializable {
     private String password;
     private String role = "0";
     private Student student;
+    private String token;
+    
  // private Business business
     @Id
     @Column(name = "idUser")
@@ -86,4 +88,12 @@ public class User implements Serializable {
         this.role = role;
     }
 
+    @Column(name = "token", nullable = false)
+    public String getToken() {
+        return password;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
