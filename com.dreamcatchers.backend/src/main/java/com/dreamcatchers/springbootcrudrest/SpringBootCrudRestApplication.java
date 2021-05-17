@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableConfigurationProperties
 @EntityScan(basePackages = {"com.dreamcatchers.springbootcrudrest.model"})  // scan JPA entities
 public class SpringBootCrudRestApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootCrudRestApplication.class, args);
 	}
