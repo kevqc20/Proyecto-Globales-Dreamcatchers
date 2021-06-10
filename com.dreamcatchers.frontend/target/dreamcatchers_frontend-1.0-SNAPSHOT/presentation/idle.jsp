@@ -52,20 +52,20 @@
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active" style="background-image: url('../assets/img/car01.jpg')">
                     <div class="carousel-caption d-none d-md-block">
-                        <h3 class="display-4">Nada desarrolla tanto</h3>
-                        <p class="display-5">la inteligencia como viajar.</p>
+                        <h3 class="display-4">El genio se hace con un 1% de talento,</h3>
+                        <p class="display-5">y un 99% de trabajo.  Albert Einstein</p>
                     </div>
                 </div>
                 <div class="carousel-item" style="background-image: url('../assets/img/car02.jpg')">
                     <div class="carousel-caption d-none d-md-block">
-                        <h3 class="display-4">Se tiene que viajar</h3>
-                        <p class="display-5">para aprender.</p>
+                        <h3 class="display-4">Pregúntate si lo que estás haciendo hoy</h3>
+                        <p class="display-5">te acerca al lugar en el que quieres estar mañana. Walt Disney</p>
                     </div>
                 </div>
                 <div class="carousel-item" style="background-image: url('../assets/img/car03.jpg')">
                     <div class="carousel-caption d-none d-md-block">
-                        <h3 class="display-4">La vida, o es una aventura</h3>
-                        <p class="display-5">o no es nada.</p>
+                        <h3 class="display-4">Ten el coraje para hacer lo que te dice</h3>
+                        <p class="display-5">tu corazón y tu intuición.  Steve Jobs</p>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
         <!-- Page Content -->
         <section class="py-5" id="about">
             <div class="container">
-                <h1 class="font-weight-light" style="color:white; text-align: center;">No olvidaras este viaje.</h1>
+                <h1 class="font-weight-light" style="color:white; text-align: center;">No olvidaras esta experiencia.</h1>
             </div>
         </section>
 
@@ -92,17 +92,41 @@
         <section class="contact-section bg-black" id="signup">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="col-md-3 mb-3 mb-md-0">
                         <div class="card py-4 h-100">
                             <div class="card-body text-center">
-                                <i class="fas fa-graduation-cap text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Diseño y Programación de Plataformas Móviles</h4>
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Grace Brenes Agüero</h4>
                                 <hr class="my-4" />
-                                <h5 class="text-uppercase m-0">Lab01</h5>
+                                <div class="small text-black-50"><a href="#!">grace.brenes.aguero@est.una.ac.cr</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
+
+
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Jendry Cascante Calvo</h4>
+                                <hr class="my-4" />
+                                <div class="small text-black-50"><a href="#!">jendry.cascante.calvo@est.una.ac.cr</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">José Barrantes Araya</h4>
+                                <hr class="my-4" />
+                                <div class="small text-black-50"><a href="#!">jose.barrantes@est.una.ac.cr</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3 mb-md-0">
                         <div class="card py-4 h-100">
                             <div class="card-body text-center">
                                 <i class="fas fa-envelope text-primary mb-2"></i>
@@ -112,18 +136,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Mariana Mora Valverde</h4>
-                                <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">mariana.valverde.mora@est.una.ac.cr</a></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-
                 <div class="social d-flex justify-content-center">
                     <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>

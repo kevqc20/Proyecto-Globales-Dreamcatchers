@@ -45,8 +45,10 @@
             <div class="container d-flex h-100 align-items-center">
                 <div class="mx-auto text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Dreamcatchers</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Dare to believe.</h2>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Atrévete a creer.</h2>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">¡Encuentra el lugar perfecto para tí en donde realizar tu práctica profesional!</h2>
                     <a class="btn btn-primary js-scroll-trigger" data-toggle='modal' data-target="#registerModal">Registrarse</a>
+                    <div style="padding-top: 5%; font-size: 20px; color: rgba(255, 255, 255, 0.5); ">¿Representas a una empresa que busca pasantes? <a data-toggle='modal' data-target="#registerModal" style="color: #409695; ">¡Registrá tú empresa!</a></div>
                 </div>
             </div>
         </header>
@@ -57,9 +59,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <h2 class="text-white mb-4">El mundo te espera</h2>
+                        <h2 class="text-white mb-4">Siempre parece imposible...</h2>
                         <p class="text-white-50">
-                            Disfruta de aventuras inolvidables al rededor del mundo, nuestra pagina ofrece acceso inmediato a destinos de ensueño.
+                            ¡Hasta que se hace! - Nelson Mandela.
                         </p>
                     </div>
                 </div>
@@ -76,8 +78,8 @@
                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/airplane-flight-sunset.jpg" alt="" /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <h4>Viaje con seguridad</h4>
-                            <p class="text-white-50 mb-0">Viaje sano y salvo</p>
+                            <h4>Empieza tu vida laboral con éxito.</h4>
+                            <p class="text-white-50 mb-0">¡Arriésgate!</p>
                         </div>
                     </div>
                 </div>
@@ -88,8 +90,8 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-black">New York</h4>
-                                    <p class="mb-0 text-black-50">Nueva York es realmente el lugar para estar; cuando vas a Nueva York, vas al centro del mundo.</p>
+                                    <h4 class="text-black">Haz crecer tu valor como profesional.</h4>
+                                    <p class="mb-0 text-black-50">Cultiva grandes aptitudes para un futuro laboral exitoso.</p>
                                     <hr class="d-none d-lg-block mb-0 ml-0" />
                                 </div>
                             </div>
@@ -103,8 +105,8 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-black">París</h4>
-                                    <p class="mb-0 text-black-50">La ciudad de los amantes, del amor.</p>
+                                    <h4 class="text-black">Descubre conocimiento solamente obtenido con práctica.</h4>
+                                    <p class="mb-0 text-black-50">¡Nunca dejes de aprender!</p>
                                     <hr class="d-none d-lg-block mb-0 mr-0" />
                                 </div>
                             </div>
@@ -118,8 +120,8 @@
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-black">Roma</h4>
-                                    <p class="mb-0 text-black-50">Todos los caminos, conducen a Roma.</p>
+                                    <h4 class="text-black">Trabaja en un equipo profesional con grandes metas.</h4>
+                                    <p class="mb-0 text-black-50">¡Descrubre tu potencial!</p>
                                     <hr class="d-none d-lg-block mb-0 ml-0" />
                                 </div>
                             </div>
@@ -137,10 +139,11 @@
                 <div class="row">
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
                         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                        <h2 class="text-white mb-5">¿A qué esperas? ¡Empieza a viajar ya!</h2>
+                        <h2 class="text-white mb-5">¿A qué esperas? ¡Empieza ya a buscar en donde realizar tu práctica profesional!</h2>
                         <div class="mx-auto text-center">
                             <a class="btn btn-primary js-scroll-trigger" data-toggle='modal' data-target="#registerModal">Registrarse</a>
                         </div>
+                        <div style="padding-top: 5%; font-size: 20px; color: rgba(255, 255, 255, 0.5); ">¿Representas a una empresa que busca pasantes? <a data-toggle='modal' data-target="#registerModal" style="color: black; ">¡Registrá tú empresa!</a></div>
                     </div>
                 </div>
             </div>
@@ -149,51 +152,50 @@
         <section class="contact-section bg-black">
             <div class="container">
                 <div class="row">
-                    
                     <div class="col-md-3 mb-3 mb-md-0">
                         <div class="card py-4 h-100">
                             <div class="card-body text-center">
                                 <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Kevin Quesada Campos</h4>
+                                <h4 class="text-uppercase m-0">Grace Brenes Agüero</h4>
                                 <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">kevin.quesada.campos@est.una.ac.cr</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-3 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Kevin Quesada Campos</h4>
-                                <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">kevin.quesada.campos@est.una.ac.cr</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-3 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Mariana Mora Valverde</h4>
-                                <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">mariana.valverde.mora@est.una.ac.cr</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-3 mb-3 mb-md-0">
-                        <div class="card py-4 h-100">
-                            <div class="card-body text-center">
-                                <i class="fas fa-envelope text-primary mb-2"></i>
-                                <h4 class="text-uppercase m-0">Kevin Quesada Campos</h4>
-                                <hr class="my-4" />
-                                <div class="small text-black-50"><a href="#!">kevin.quesada.campos@est.una.ac.cr</a></div>
+                                <div class="small text-black-50"><a href="#!">grace.brenes.aguero@est.una.ac.cr</a></div>
                             </div>
                         </div>
                     </div>
 
+
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Jendry Cascante Calvo</h4>
+                                <hr class="my-4" />
+                                <div class="small text-black-50"><a href="#!">jendry.cascante.calvo@est.una.ac.cr</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">José Barrantes Araya</h4>
+                                <hr class="my-4" />
+                                <div class="small text-black-50"><a href="#!">jose.barrantes@est.una.ac.cr</a></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <i class="fas fa-envelope text-primary mb-2"></i>
+                                <h4 class="text-uppercase m-0">Kevin Quesada Campos</h4>
+                                <hr class="my-4" />
+                                <div class="small text-black-50"><a href="#!">kevin.quesada.campos@est.una.ac.cr</a></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="social d-flex justify-content-center">

@@ -50,7 +50,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
                             <input type="text" class="form-control" id="user_username_rm" placeholder="Usuario" required="required">
-                            <input type="email" class="form-control" id="email_rm" placeholder="Correo" required="required">
+                            <input type="email" class="form-control" id="email_rm" placeholder="Correo electrónico" required="required">
                         </div>
                     </div>
                     <div class="form-group">
@@ -63,13 +63,13 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" id="name_rm" placeholder="Nombre" required="required">
-                            <input type="text" class="form-control" id="lastname_rm" placeholder="Apellido" required="required">
+                            <input type="text" class="form-control" id="lastname_rm" placeholder="Apellidos" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="number" class="form-control" id="work_phone_rm" placeholder="Teléfono de trabajo" required="required">
-                            <input type="number" class="form-control" id="cell_phone_rm" placeholder="Teléfono personal" required="required">
+                            <input type="text" class="form-control" id="university_rm" placeholder="Universidad" required="required">
+                            <input type="text" class="form-control" id="career_rm" placeholder="Carrera" required="required">
                         </div>
                     </div>
                     <div class="form-group">

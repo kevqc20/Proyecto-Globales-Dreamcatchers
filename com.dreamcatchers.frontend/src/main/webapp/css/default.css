@@ -2013,7 +2013,7 @@ pre code {
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
     padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
@@ -5706,7 +5706,7 @@ a.close.disabled {
 /* Modal styles */
 
 .modal-login {
-    width: 700px;
+    width: auto;
     font-size: 20px;
 }
 
@@ -10661,13 +10661,13 @@ body {
 
 #mainNav {
     min-height: 3.5rem;
-    background-color: rgba(245, 245, 245, 0.4);
+    background-color: rgba(64, 150, 149, 0.8);
 }
 #mainNav .navbar-toggler {
     font-size: 80%;
     padding: 0.75rem;
-    color: #409695;
-    border: 1px solid #409695;
+    color: white;
+    border: 1px solid white;
 }
 #mainNav .navbar-toggler:focus {
     outline: none;
@@ -10703,6 +10703,56 @@ body {
     }
     #mainNav .nav-link {
         transition: none;
+        padding: 2rem 1.5rem;
+        color: #e7e7e7;
+        text-align: center;
+    }
+    #mainNav .nav-link:hover {
+        color: rgba(255, 255, 255, 0.2);
+    }
+    #mainNav .nav-link:active {
+        color: #fff;
+    }
+    #mainNav.navbar-shrink {
+        background-color: #fff;
+    }
+    #mainNav.navbar-shrink .navbar-brand {
+        color: #000000;
+    }
+    #mainNav.navbar-shrink .nav-link {
+        color: #000000;
+        padding: 1.5rem 1.5rem 1.25rem;
+        border-bottom: 0.25rem solid transparent;
+    }
+    #mainNav.navbar-shrink .nav-link:hover {
+        color: #409695;
+    }
+    #mainNav.navbar-shrink .nav-link:active {
+        color: #467370;
+    }
+    #mainNav.navbar-shrink .nav-link.active {
+        color: #409695;
+        outline: none;
+        border-bottom: 0.25rem solid #409695;
+    }
+}
+
+@media (max-width: 991px) {
+    #mainNav {
+        font-size: 20px;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+        background-color: rgba(64, 150, 149, 0.8);
+        transition: background-color 0.3s ease-in-out;
+    }
+    #mainNav .navbar-brand {
+        padding-left: 60%;
+        color: #e7e7e7;
+        font-size: 30px;    
+    }
+    #mainNav .nav-link {
+        transition: 0.4s;
         padding: 2rem 1.5rem;
         color: #e7e7e7;
         text-align: center;
@@ -10791,7 +10841,7 @@ body {
     }
     .masthead h2 {
         max-width: 30rem;
-        font-size: 1.25rem;
+        font-size: 1.50rem;
     }
 }
 
