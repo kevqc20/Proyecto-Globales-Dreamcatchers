@@ -1,5 +1,8 @@
 package com.dreamcatchers.springbootcrudrest.exception;
-
+/**
+ *
+ * @author yenca
+ */
 import java.util.Date;
 
 public class ErrorDetails {

@@ -7,7 +7,7 @@ package com.dreamcatchers.springbootcrudrest.model;
 
 /**
  *
- * @author kevin
+ * @author yenca
  */
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -61,7 +61,6 @@ public class Student implements Serializable {
     }
     
     
-
     @Column(name = "name", nullable = false)
     public String getName() {
         return name;

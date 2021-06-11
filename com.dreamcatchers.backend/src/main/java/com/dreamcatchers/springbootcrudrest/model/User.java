@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package com.dreamcatchers.springbootcrudrest.model;
-
+/**
+ *
+ * @author yenca
+ */
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
