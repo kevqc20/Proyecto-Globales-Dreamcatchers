@@ -59,12 +59,11 @@ public class ApplicationController {
         Application application = applicationRepository.findById(applicationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Application not found :: " + applicationId));
 
-        application.setStudent(application.getStudent());
-        application.setInternship_Offer(application.getInternship_Offer());
-        application.setidApplication(application.getidApplication());
-        application.setidStudent(application.getidStudent());
-        application.setidInternship_Offer(application.getidInternship_Offer());
+        application.setIdApplication(application.getIdApplication());
+        application.setIdStudent(application.getIdStudent());
+        application.setIdInternship_Offer(application.getIdInternship_Offer());
         application.setDate(application.getDate());
+        application.setStudents(application.getStudents());
         
         final Application updateApplication = applicationRepository.save(application);
         return ResponseEntity.ok(updateApplication);

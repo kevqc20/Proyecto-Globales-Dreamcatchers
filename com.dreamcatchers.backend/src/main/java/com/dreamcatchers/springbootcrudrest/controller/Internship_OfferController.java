@@ -66,6 +66,7 @@ public class Internship_OfferController{
         internship_Offer.setDescription(internship_Offer.getDescription());
         internship_Offer.setPerks(internship_Offer.getPerks());
         internship_Offer.setRequirements(internship_Offer.getRequirements());
+        internship_Offer.setBusiness_(internship_Offer.getBusiness_());
         
         final Internship_Offer updateInternship_Offer = internship_OfferRepository.save(internship_Offer);
         return ResponseEntity.ok(updateInternship_Offer);
