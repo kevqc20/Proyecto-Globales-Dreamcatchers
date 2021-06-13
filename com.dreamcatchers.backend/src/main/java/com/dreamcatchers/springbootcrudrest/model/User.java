@@ -30,7 +30,8 @@ public class User implements Serializable {
     private String password;
     private String role = "0";
     private Student student;
- // private Business business
+    private Business business;
+    
     @Id
     @Column(name = "idUser")
     public String getIdUser() {
@@ -50,6 +51,17 @@ public class User implements Serializable {
     public void setStudent(Student student) {
         this.student = student;
     }
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonBackReference
+    public Business getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(Business business) {
+        this.business = business;
+    }
+    
     
     // Esto mismo pero para business 
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
