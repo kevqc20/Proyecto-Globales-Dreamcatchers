@@ -13,14 +13,20 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -40,11 +46,9 @@ public class Student implements Serializable {
     private String career;
     private String address;
     private String curriculum;
+    private Set<Application> applications = new HashSet<>();
 
-    @Access(AccessType.FIELD)
-    @ManyToOne
-    @JoinColumn (name="idApplication",referencedColumnName="idApplication",nullable=false,unique=true)
-    private Application application;
+    
     
     @Id
     @Column(name = "idStudent")
@@ -57,9 +61,8 @@ public class Student implements Serializable {
     }
 
     
-    @OneToOne
-    @PrimaryKeyJoinColumn(name="idStudent", referencedColumnName="idUser") // Cambiar a foreign
-    @JsonManagedReference
+    @MapsId
+    @OneToOne(cascade=CascadeType.ALL)
     public User getUser() {
         return user;
     }
@@ -131,13 +134,16 @@ public class Student implements Serializable {
     public void setCurriculum(String curriculum) {
         this.curriculum = curriculum;
     }
-    @Column(name = "application", nullable = false)
-    public Application getApplication() {
-        return application;
+    
+    
+    @OneToMany(mappedBy="student", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value="application-student")
+    public Set<Application> getApplications() {
+        return applications;
     }
 
-    public void setApplication(Application application) {
-        this.application = application;
+    public void setApplications(Set<Application> applications) {
+        this.applications = applications;
     }
 
     

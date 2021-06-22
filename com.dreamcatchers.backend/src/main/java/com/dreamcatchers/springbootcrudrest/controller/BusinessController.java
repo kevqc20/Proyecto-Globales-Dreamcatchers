@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dreamcatchers.springbootcrudrest.exception.ResourceNotFoundException;
 import com.dreamcatchers.springbootcrudrest.model.Business;
+import com.dreamcatchers.springbootcrudrest.model.User;
 import com.dreamcatchers.springbootcrudrest.repository.BusinessRepository;
+import com.dreamcatchers.springbootcrudrest.repository.UserRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
@@ -31,6 +33,9 @@ public class BusinessController {
 
     @Autowired
     private BusinessRepository businessRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     //Obtener todos las empresas
     @CrossOrigin
@@ -78,6 +83,8 @@ public class BusinessController {
     @CrossOrigin
     @PostMapping("/business")
     public Business createBusiness(@Valid @RequestBody Business business) {
+        User user = userRepository.findById(business.getIdBusiness()).get();
+        business.setUser(user);
         return businessRepository.save(business);
     }
 
