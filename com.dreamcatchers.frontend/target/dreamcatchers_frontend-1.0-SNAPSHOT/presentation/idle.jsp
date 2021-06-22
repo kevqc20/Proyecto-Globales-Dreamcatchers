@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Lab01 Idle</title>
+        <title>Dreamcatchers Idle</title>
         <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -29,12 +29,21 @@
         <!-- Core theme JS-->
         <script src="../js/script.js" type="text/javascript"></script>
 
-        <script src="../js/jquery.seat-charts.js"></script>
-        <link rel="stylesheet" href="../css/jquery.seat-charts.css">
+
 
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
 
+
+        <script>
+            UPLOADCARE_PUBLIC_KEY = '11db706ba7fb96c6a253';
+            UPLOADCARE_LOCALE = 'es';
+            UPLOADCARE_TABS = 'file gdrive dropbox onedrive';
+            UPLOADCARE_CLEARABLE = true;
+        </script>
+
+        <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+        
     </head>
 
 

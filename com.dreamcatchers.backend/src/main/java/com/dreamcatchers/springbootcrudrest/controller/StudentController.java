@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dreamcatchers.springbootcrudrest.exception.ResourceNotFoundException;
 import com.dreamcatchers.springbootcrudrest.model.Student;
+import com.dreamcatchers.springbootcrudrest.model.User;
 import com.dreamcatchers.springbootcrudrest.repository.StudentRepository;
+import com.dreamcatchers.springbootcrudrest.repository.UserRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,6 +35,9 @@ public class StudentController {
 
     @Autowired
     private StudentRepository studentRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
 
     //Obtener todos los ciudadanos
     @CrossOrigin
@@ -67,6 +72,8 @@ public class StudentController {
         student.setCurriculum(studentDetails.getCurriculum());
         student.setDob(studentDetails.getDob());
         student.setUniversity(studentDetails.getUniversity());
+        student.setUser(studentDetails.getUser());
+        student.setApplications(studentDetails.getApplications());
         final Student updatedStudent = studentRepository.save(student);
         return ResponseEntity.ok(updatedStudent);
     }
@@ -75,6 +82,8 @@ public class StudentController {
     @CrossOrigin
     @PostMapping("/students")
     public Student createStudent(@Valid @RequestBody Student student) {
+        User user = userRepository.findById(student.getIdStudent()).get();
+        student.setUser(user);
         return studentRepository.save(student);
     }
 

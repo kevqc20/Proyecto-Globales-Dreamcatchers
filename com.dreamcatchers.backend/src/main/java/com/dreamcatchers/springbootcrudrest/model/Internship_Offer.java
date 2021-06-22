@@ -11,12 +11,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
@@ -29,39 +33,32 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 public class Internship_Offer implements Serializable {
 
-    private String idInternship_Offer;
-    private String BusinessId;
+    private long idInternship_Offer;
+    private String idBusiness;
     private String position;
     private String description;
     private String perks;
     private String requirements;
-    private Application application;
+    private Business business;
+    private Set<Application> applications;
 
     @Id
+    @GeneratedValue(
+            strategy = GenerationType.AUTO,
+            generator = "native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     @Column(name = "idInternship_Offer")
-    public String getIdInternship_Offer() {
+    public long getIdInternship_Offer() {
         return idInternship_Offer;
     }
 
-    public void setIdInternship_Offer(String idInternship_Offer) {
+    public void setIdInternship_Offer(long idInternship_Offer) {
         this.idInternship_Offer = idInternship_Offer;
     }
-
-    @Access(AccessType.FIELD)
-    @OneToMany(mappedBy = "INTERNSHIP_OFFER", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Business> business_;
-
-    @OneToOne
-    @JoinColumn(name="idInternship_Offer", referencedColumnName="idApplication") // Cambiar a foreign
-    @JsonManagedReference
-    public Application getApplication() {
-        return application;
-    }
-
-    public void setApplication(Application application) {
-        this.application = application;
-    }
-    
 
     @Column(name = "position", nullable = false)
     public String getPosition() {
@@ -79,6 +76,15 @@ public class Internship_Offer implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Column(name = "idBusiness", nullable = false)
+    public String getIdBusiness() {
+        return idBusiness;
+    }
+
+    public void setIdBusiness(String idBusiness) {
+        this.idBusiness = idBusiness;
     }
 
     @Column(name = "perks", nullable = false)
@@ -99,23 +105,25 @@ public class Internship_Offer implements Serializable {
         this.requirements = requirements;
     }
 
-    @Column(name = "business", nullable = false)
-    public Set<Business> getBusiness_() {
-        return business_;
+    @ManyToOne
+    @JoinColumn(name = "idBusiness", insertable = false, updatable = false)
+    @JsonBackReference(value = "internship-business")
+    public Business getBusiness() {
+        return business;
     }
 
-    public void setBusiness_(Set<Business> business_) {
-        this.business_ = business_;
+    public void setBusiness(Business business_) {
+        this.business = business_;
     }
 
-    @Column(name = "BusinessId", nullable = false)
-    public String getBusinessId() {
-        return BusinessId;
-    }
-    
-    public void setBusinessId(String BusinessId) {
-        this.BusinessId = BusinessId;
+    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value = "application-offer")
+    public Set<Application> getApplications() {
+        return applications;
     }
 
-    
+    public void setApplications(Set<Application> applications) {
+        this.applications = applications;
+    }
+
 }

@@ -16,12 +16,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
@@ -30,25 +34,70 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 public class Application implements Serializable {
 
-    private String idApplication;
+    private long idApplication;
+    private long idInternship_Offer;
     private String idStudent;
-    private String idInternship_Offer;
+    private Internship_Offer offer;
     private Date date;
-    private Internship_Offer internship_Offers;
- 
+    private Student student;
+
     @Id
+    @GeneratedValue(
+            strategy = GenerationType.AUTO,
+            generator = "native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     @Column(name = "idApplication")
-    public String getIdApplication() {
+    public long getIdApplication() {
         return idApplication;
     }
 
-    public void setIdApplication(String idApplication) {
+    public void setIdApplication(long idApplication) {
         this.idApplication = idApplication;
     }
-    
-    @Access(AccessType.FIELD)
-    @OneToMany(mappedBy = "application", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Student> students;
+
+    @Column(name = "idInternship_Offer", nullable = false)
+    public long getIdInternship_Offer() {
+        return idInternship_Offer;
+    }
+
+    public void setIdInternship_Offer(long idInternship_Offer) {
+        this.idInternship_Offer = idInternship_Offer;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "idInternship_Offer", insertable = false, updatable = false)
+    @JsonBackReference(value = "application-offer")
+    public Internship_Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Internship_Offer offers) {
+        this.offer = offers;
+    }
+
+    @Column(name = "date", nullable = false)
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "idStudent", insertable = false, updatable = false)
+    @JsonBackReference(value = "application-student")
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     @Column(name = "idStudent", nullable = false)
     public String getIdStudent() {
@@ -58,41 +107,5 @@ public class Application implements Serializable {
     public void setIdStudent(String idStudent) {
         this.idStudent = idStudent;
     }
-    
-    @OneToOne(mappedBy = "application", cascade = CascadeType.ALL)
-    @JsonBackReference
-    public Internship_Offer getInternship_Offer() {
-        return internship_Offers;
-    }
 
-    public void setInternship_Offer(Internship_Offer internship_Offers) {
-        this.internship_Offers = internship_Offers;
-    }
-    
-    @Column(name = "idInternship_Offer", nullable = false)
-    public String getIdInternship_Offer() {
-        return idInternship_Offer;
-    }
-
-    public void setIdInternship_Offer(String idInternship_Offer) {
-        this.idInternship_Offer = idInternship_Offer;
-    }
-    
-    @Column(name = "date", nullable = false)
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-    @Column(name = "students", nullable = false)
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
-   
 }

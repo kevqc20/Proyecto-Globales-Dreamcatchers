@@ -1,16 +1,21 @@
 package com.dreamcatchers.springbootcrudrest.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -38,7 +43,8 @@ public class Business implements Serializable {
     private float revenue;
     private String calification;
     private String perks;
- 
+    private Set<Internship_Offer> internships;
+
     @Id
     @Column(name = "idBusiness")
     public String getIdBusiness() {
@@ -48,11 +54,9 @@ public class Business implements Serializable {
     public void setIdBusiness(String idBusiness) {
         this.idBusiness = idBusiness;
     }
-    
-    
-    @OneToOne
-    @PrimaryKeyJoinColumn(name="idBusiness", referencedColumnName="idUser") // Cambiar a foreign
-    @JsonManagedReference
+
+    @MapsId
+    @OneToOne(cascade=CascadeType.ALL)
     public User getUser() {
         return user;
     }
@@ -60,11 +64,6 @@ public class Business implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-    
-    @Access(AccessType.FIELD)
-    @ManyToOne
-    @JoinColumn (name="idInternship_Offer",nullable=false,unique=true)
-    private Internship_Offer Internship_Offer;
 
     @Column(name = "name", nullable = false)
     public String getName() {
@@ -156,13 +155,14 @@ public class Business implements Serializable {
         this.perks = perks;
     }
 
-    @Column(name = "Internship_Offer", nullable = false)
-    public Internship_Offer getInternship_Offers() {
-        return Internship_Offer;
+    @OneToMany(mappedBy="business", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference(value="internship-business")
+    public Set<Internship_Offer> getInternships() {
+        return internships;
     }
 
-    public void setInternship_Offers(Internship_Offer Internship_Offers) {
-        this.Internship_Offer = Internship_Offers;
+    public void setInternships(Set<Internship_Offer> internships) {
+        this.internships = internships;
     }
 
 }

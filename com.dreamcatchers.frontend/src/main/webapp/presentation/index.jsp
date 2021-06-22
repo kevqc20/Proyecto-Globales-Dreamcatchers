@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Lab01</title>
+        <title>Dreamcatchers</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -32,6 +32,17 @@
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
 
+
+        <script>
+            UPLOADCARE_PUBLIC_KEY = '11db706ba7fb96c6a253';
+            UPLOADCARE_LOCALE = 'es';
+            UPLOADCARE_TABS = 'file gdrive dropbox onedrive';
+            UPLOADCARE_CLEARABLE = true;
+        </script>
+
+        <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+        
+        
     </head>
 
 
@@ -48,7 +59,7 @@
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">Atrévete a creer.</h2>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">¡Encuentra el lugar perfecto para tí en donde realizar tu práctica profesional!</h2>
                     <a class="btn btn-primary js-scroll-trigger" data-toggle='modal' data-target="#registerModal">Registrarse</a>
-                    <div style="padding-top: 5%; font-size: 20px; color: rgba(255, 255, 255, 0.5); ">¿Representas a una empresa que busca pasantes? <a data-toggle='modal' data-target="#registerModal" style="color: #409695; ">¡Registrá tú empresa!</a></div>
+                    <div style="padding-top: 5%; font-size: 20px; color: rgba(255, 255, 255, 0.5); ">¿Representas a una empresa que busca pasantes? <a data-toggle='modal' data-target="#registerBusinessModal" style="color: #409695; ">¡Registrá tú empresa!</a></div>
                 </div>
             </div>
         </header>
@@ -143,7 +154,7 @@
                         <div class="mx-auto text-center">
                             <a class="btn btn-primary js-scroll-trigger" data-toggle='modal' data-target="#registerModal">Registrarse</a>
                         </div>
-                        <div style="padding-top: 5%; font-size: 20px; color: rgba(255, 255, 255, 0.5); ">¿Representas a una empresa que busca pasantes? <a data-toggle='modal' data-target="#registerModal" style="color: black; ">¡Registrá tú empresa!</a></div>
+                        <div style="padding-top: 5%; font-size: 20px; color: rgba(255, 255, 255, 0.5); ">¿Representas a una empresa que busca pasantes? <a data-toggle='modal' data-target="#registerBusinessModal" style="color: black; ">¡Registrá tú empresa!</a></div>
                     </div>
                 </div>
             </div>

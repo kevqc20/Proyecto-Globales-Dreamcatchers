@@ -23,7 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dreamcatchers.springbootcrudrest.exception.ResourceNotFoundException;
 import com.dreamcatchers.springbootcrudrest.model.Application;
 import com.dreamcatchers.springbootcrudrest.model.Internship_Offer;
+import com.dreamcatchers.springbootcrudrest.model.Student;
 import com.dreamcatchers.springbootcrudrest.repository.ApplicationRepository;
+import com.dreamcatchers.springbootcrudrest.repository.Internship_OfferRepository;
+import com.dreamcatchers.springbootcrudrest.repository.StudentRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
@@ -33,6 +36,12 @@ public class ApplicationController {
     @Autowired
     private ApplicationRepository applicationRepository;
 
+    @Autowired
+    private Internship_OfferRepository internship_OfferRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
     //Obtener todos las aplicaciones
     @CrossOrigin
     @GetMapping("/application")
@@ -40,11 +49,25 @@ public class ApplicationController {
         return applicationRepository.findAll();
     }
 
+    //Obtener todos las aplicaciones por estudiante
+    @CrossOrigin
+    @GetMapping("/applicationStudent/{idStudent}")
+    public List<Object> getAllApplicationsByStudent(@PathVariable(value = "idStudent") String idStudent) throws ResourceNotFoundException {
+        return applicationRepository.findApplicationByStudent(idStudent);
+    }
+
+    //Obtener todos las aplicaciones por estudiante
+    @CrossOrigin
+    @GetMapping("/applicationFilt")
+    public List<Object> getAllApplicationsFiltered() throws ResourceNotFoundException {
+        return applicationRepository.findApplicationFiltered();
+    }
+
     //Obtener la aplicacion por el id
     @CrossOrigin
     @GetMapping("/application/{id}")
     public ResponseEntity<Application> getApplicationById(
-            @PathVariable(value = "id") String applicationId) throws ResourceNotFoundException {
+            @PathVariable(value = "id") Long applicationId) throws ResourceNotFoundException {
         Application application = applicationRepository.findById(applicationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Application not found :: " + applicationId));
         return ResponseEntity.ok().body(application);
@@ -54,17 +77,17 @@ public class ApplicationController {
     @CrossOrigin
     @PutMapping("/application/{id}")
     public ResponseEntity<Application> updateApplication(
-            @PathVariable(value = "id") String applicationId,
+            @PathVariable(value = "id") Long applicationId,
             @Valid @RequestBody Application applicationDetails) throws ResourceNotFoundException {
         Application application = applicationRepository.findById(applicationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Application not found :: " + applicationId));
 
         application.setIdApplication(application.getIdApplication());
-        application.setIdStudent(application.getIdStudent());
-        application.setIdInternship_Offer(application.getIdInternship_Offer());
+        application.setOffer(application.getOffer());
         application.setDate(application.getDate());
-        application.setStudents(application.getStudents());
-        
+        application.setStudent(application.getStudent());
+        application.setIdInternship_Offer(application.getIdInternship_Offer());
+        application.setIdStudent(application.getIdStudent());
         final Application updateApplication = applicationRepository.save(application);
         return ResponseEntity.ok(updateApplication);
     }
@@ -72,7 +95,11 @@ public class ApplicationController {
     //Crear una aplicacion
     @CrossOrigin
     @PostMapping("/application")
-    public Application createBusiness(@Valid @RequestBody Application application) {
+    public Application createApplication(@Valid @RequestBody Application application) {
+        Internship_Offer internship_Offer = internship_OfferRepository.findById(application.getIdInternship_Offer()).get();
+        application.setOffer(internship_Offer);
+        Student student = studentRepository.findById(application.getIdStudent()).get();
+        application.setStudent(student);
         return applicationRepository.save(application);
     }
 
@@ -80,7 +107,7 @@ public class ApplicationController {
     @CrossOrigin
     @DeleteMapping("/application/{id}")
     public Map<String, Boolean> deleteApplication(
-            @PathVariable(value = "id") String applicationId) throws ResourceNotFoundException {
+            @PathVariable(value = "id") Long applicationId) throws ResourceNotFoundException {
         Application application = applicationRepository.findById(applicationId)
                 .orElseThrow(() -> new ResourceNotFoundException("Application not found :: " + applicationId));
 

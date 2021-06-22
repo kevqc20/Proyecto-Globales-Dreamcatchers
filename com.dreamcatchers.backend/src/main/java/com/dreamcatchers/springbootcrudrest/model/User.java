@@ -15,8 +15,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -40,39 +42,7 @@ public class User implements Serializable {
 
     public void setIdUser(String idUser) {
         this.idUser = idUser;
-    }
-
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonBackReference
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-    
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonBackReference
-    public Business getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(Business business) {
-        this.business = business;
-    }
-    
-    
-    // Esto mismo pero para business 
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-//    @JsonBackReference
-//    public Student getStudent() {
-//        return student;
-//    }
-//
-//    public void setStudent(Student student) {
-//        this.student = student;
-//    }
+    }    
     
     @Column(name = "email", nullable = false)
     public String getEmail() {
